@@ -6,12 +6,10 @@ class custom_crm(models.Model):
     _description = 'visit'
 
     name = fields.Char(string = 'Descripción')
-    customer = fields.Char(string = 'Cliente')
+    customer = fields.Many2one(string = 'Cliente', comodel_name = 'res.partner')
     date = fields.Datetime(string = 'Fecha')
     type = fields.Selection([('P','Presencial'), ('W','WhatsApp'), ('T','Telefono')], string = 'Tipo visita', required=True )
     done = fields.Boolean(string = 'Realizado', readonly = True)
 
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    def toggle_state(self):
+        self.done = not self.done

@@ -7,7 +7,12 @@
       <field name="arch" type="xml">
         <!-- view content: <form>, <tree>, <graph>, ... -->
             <!-- VISTA FORMULARIO -->
-        <form string="Idea form">
+        <form string="Visita">
+            <!-- BOTON -->
+            <div class="oe_button_box" name="button_box">
+             <button name="toggle_state" type="object" class="oe_stat_button" string="Cambiar realizada" icon="fa-play-circle"/>
+            </div>
+            <!-- -->
             <group colspan="4">
                 <group colspan="2" col="2">
                     <separator string="Customer" colspan="2"/>
