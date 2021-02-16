@@ -10,6 +10,7 @@ class custom_crm(models.Model):
     date = fields.Datetime(string = 'Fecha')
     type = fields.Selection([('P','Presencial'), ('W','WhatsApp'), ('T','Telefono')], string = 'Tipo visita', required=True )
     done = fields.Boolean(string = 'Realizado', readonly = True)
+    image = fields.Binary(string = 'Imagen')
 
     def toggle_state(self):
         self.done = not self.done
