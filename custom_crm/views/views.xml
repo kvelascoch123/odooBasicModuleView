@@ -1,0 +1,66 @@
+<odoo>
+  <data>
+    <!-- GENERIC VIEW NECESARIO SIEMPRE -->
+    <record model="ir.ui.view" id="view_custom_crm_visit_form">
+      <field name="name">view.custom.crm.visit.form</field>
+      <field name="model">custom_crm.visit</field>
+      <field name="arch" type="xml">
+        <!-- view content: <form>, <tree>, <graph>, ... -->
+            <!-- VISTA FORMULARIO -->
+        <form string="Idea form">
+            <group colspan="4">
+                <group colspan="2" col="2">
+                    <separator string="Customer" colspan="2"/>
+                    <field name="customer"/>
+                    <field name="date"/>
+                    <field name="type"/>
+                </group>
+
+                <group colspan="2" col="2">
+                    <separator string="Information" colspan="2"/>
+                    <field name="name"/>
+                    <field name="done" readonly="1"/>
+                </group>
+
+
+            </group>
+        </form>
+      </field>
+    </record>
+        <!-- FIN VISTA FORMULARIO -->
+    <record model="ir.ui.view" id="view_custom_crm_visit_tree">
+      <field name="name">view.custom.crm.visit.tree</field>
+      <field name="model">custom_crm.visit</field>
+      <field name="arch" type="xml">
+          <!-- view content: <form>, <tree>, <graph>, ... -->
+        <tree string="Visit">
+          <field name="customer"/>
+          <field name="name"/>
+          <field name="type"/>
+          <field name="date"/>
+        </tree>
+      </field>
+    </record>
+        <!-- Vista ARBOL -->
+        <!-- FIN VISTA ARBOL -->
+    <!-- ACCIONES -> Labores de controladores, click en el menu-->
+      <record model="ir.actions.act_window" id="action_custom_crm_visit_view">
+        <field name="name">Visita</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custom_crm.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <!-- Si no hay registros aparece este contenido por defecto-->
+          <p>
+            CLick 'Nuevo' para añadir nuevos elementos
+          </p>
+        </field>
+      </record>
+
+
+    <!--  MENUS DEL MODULO CRM -->
+    <menuitem id="menu_custom_crm_root" name="Custom CRM" sequence="10"/>
+    <menuitem id="menu_custom_crm_visit_categ" name="Operaciones" parent="menu_custom_crm_root" sequence="0"/>
+    <menuitem id="menu_custom_crm_visit" name="Visitas" parent="menu_custom_crm_visit_categ" sequence="0" action="action_custom_crm_visit_view"/>
+  </data>
+</odoo>
